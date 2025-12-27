@@ -7,18 +7,25 @@ import (
 
 func twoSum(nums []int, target int) [][]int {
 	res := make([][]int, 0)
-	m := make(map[int][]int)
+	l, r := 0, len(nums)-1
 
-	for i, v := range nums {
-		if a, ok := m[target-v]; ok {
-			for _, j := range a {
-				minv, maxv := min(nums[i], nums[j]), max(nums[i], nums[j])
+	for l < r {
+		if nums[l]+nums[r] < target {
+			l++
+		} else if nums[l]+nums[r] > target {
+			r--
+		} else {
+			res = append(res, []int{nums[l], nums[r]})
 
-				res = append(res, []int{minv, maxv})
+			sv, sr := nums[l], nums[r]
+			for l < r && sv == nums[l] {
+				l++
+			}
+
+			for l < r && sr == nums[r] {
+				r--
 			}
 		}
-
-		m[v] = append(m[v], i)
 	}
 
 	return res
@@ -28,7 +35,7 @@ func threeSum(nums []int) [][]int {
 	res := make([][]int, 0)
 	slices.Sort(nums)
 
-	for i := 0; i < len(nums)-2; i++ {
+	for i := range len(nums) - 2 {
 		v := nums[i]
 
 		if i != 0 && v == nums[i-1] {
@@ -45,7 +52,7 @@ func threeSum(nums []int) [][]int {
 
 func main() {
 	// fmt.Println(twoSum([]int{0, 1, 2, -1, 1, -4}, 1))
-	fmt.Println(threeSum([]int{-1, 0, 1, 2, -1, -4}))
+	// fmt.Println(threeSum([]int{-1, 0, 1, 2, -1, -4}))
 	// fmt.Println(threeSum([]int{-100000, -99999, 199999}))
-	// fmt.Println(threeSum([]int{0, 0, 0}))
+	fmt.Println(threeSum([]int{0, 1, 1}))
 }
