@@ -1,0 +1,11 @@
+[package]
+name = "leetcode"
+version = "0.1.0"
+edition = "2024"
+autobins = false
+
+[dependencies]
+
+[[bin]]
+name = "reverse-string"
+path = "reverse_string/main.rs"
