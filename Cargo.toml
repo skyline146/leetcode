@@ -9,3 +9,11 @@ autobins = false
 [[bin]]
 name = "reverse-string"
 path = "reverse_string/main.rs"
+
+[[bin]]
+name = "valid-palindrome"
+path = "valid_palindrome/main.rs"
+
+[[bin]]
+name = "merge-sorted-array"
+path = "merge_sorted_array/main.rs"
